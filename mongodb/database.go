@@ -1,4 +1,4 @@
-package mongo
+package mongodb
 
 import (
 	"gopkg.in/mgo.v2"
@@ -9,9 +9,9 @@ type DatabaseSession struct {
     databaseName string
 }
 
-func NewSession(name string) *DatabaseSession {
+func NewSession(url string, name string) *DatabaseSession {
 
-    session, err := mgo.Dial("mongodb://localhost")
+    session, err := mgo.Dial(url)
     if err != nil {
         panic(err)
     }
