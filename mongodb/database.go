@@ -1,6 +1,7 @@
 package mongodb
 
 import (
+	"log"
 	"gopkg.in/mgo.v2"
 )
 
@@ -11,8 +12,12 @@ type DatabaseSession struct {
 
 func NewSession(url string, name string) *DatabaseSession {
 
+	log.Println(url)
+	log.Println(name)
+
     session, err := mgo.Dial(url)
     if err != nil {
+    	log.Println(err)
         panic(err)
     }
 

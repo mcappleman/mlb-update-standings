@@ -15,6 +15,7 @@ type Config struct {
 func DecodeConfig() Config{
 
 	file, _ := os.Open("config.json")
+	defer file.Close()
 	decoder := json.NewDecoder(file)
 	configuration := Config{}
 	err := decoder.Decode(&configuration)

@@ -12,9 +12,10 @@ import (
 func main() {
 
 	conf := config.DecodeConfig()
-	
+
 	file, err := os.OpenFile(conf.LOG_FILE, os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
 	if err != nil {
+		log.Println(err)
 		log.Fatalln("Unable to open log file.")
 	}
 
@@ -27,6 +28,8 @@ func main() {
 
 	teamList := teams.GetTeams(session.Database())
 
-	log.Println(teamList)
+	for _, team := range teamList {
+		team.GetAndUpdateRecord(session.Database())
+	}
 
 }

@@ -1,5 +1,5 @@
 {
-	"LOG_FILE": "~/logs/mlb-update-standings.log",
+	"LOG_FILE": "../logs/mlb-update-standings.log",
 	"DATABASE_URL": "mongodb://localhost",
-	"DATABASE_URL": "mlb_feed"
+	"DATABASE_NAME": "mlb_feed"
 }
