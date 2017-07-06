@@ -30,7 +30,8 @@ type Record struct {
 	Wins		int              	`json:"wins" bson:"wins"`
 	Losses		int              	`json:"losses" bson:"losses"`
 	Year		int              	`json:"year" bson:"year"`
-	WinPercent	float64				`json:"win_percent" bson:"win_percent"`
+	WinPercent	float64			`json:"win_percent" bson:"win_percent"`
+	EloRating	float64			`json:"elo_rating" bson:"elo_rating"`
 }
 
 const collection = "teams"
@@ -90,7 +91,7 @@ func (t *Team) GetAndUpdateRecord(db *mgo.Database) {
 	var record Record
 	err = db.C(records).Find(bson.M{ "team": t.Id, "year": currentYear }).One(&record)
 	if err != nil {
-		record = Record{bson.NewObjectId(), t.Id, wins, losses, currentYear, winPercent}
+		record = Record{bson.NewObjectId(), t.Id, wins, losses, currentYear, winPercent, 0}
 		err := db.C(records).Insert(record)
 		if err != nil {
 			log.Println("Error inserting Team Record", err)
