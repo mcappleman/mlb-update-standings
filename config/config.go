@@ -2,17 +2,17 @@ package config
 
 import (
 	"encoding/json"
-	"os"
 	"log"
+	"os"
 )
 
 type Config struct {
-	LOG_FILE string
-	DATABASE_URL string
+	LOG_FILE      string
+	DATABASE_URL  string
 	DATABASE_NAME string
 }
 
-func DecodeConfig() Config{
+func DecodeConfig() Config {
 
 	file, _ := os.Open("/home/matt_cappleman/projects/go/src/github.com/mcappleman/mlb-update-standings/config.json")
 	defer file.Close()
