@@ -15,6 +15,7 @@ func NewSession(url string, name string) *DatabaseSession {
 	log.Println(url)
 	log.Println(name)
 
+	url = url + "/" + name
     session, err := mgo.Dial(url)
     if err != nil {
     	log.Println(err)

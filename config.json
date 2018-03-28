@@ -1,5 +1,5 @@
 {
-	"LOG_FILE": "/home/matt_cappleman/logs/mlb-update-standings.log",
-	"DATABASE_URL": "mongodb://localhost",
-	"DATABASE_NAME": "mlb_feed"
+	"LOG_FILE": "/home/pi/logs/mlb-update-standings.log",
+	"DATABASE_URL": "mongodb://raspberrypi:Test1234@ds031203.mlab.com:31203",
+	"DATABASE_NAME": "drinen-mlb-feed"
 }

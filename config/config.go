@@ -14,11 +14,16 @@ type Config struct {
 
 func DecodeConfig() Config {
 
-	file, _ := os.Open("/home/matt_cappleman/projects/go/src/github.com/mcappleman/mlb-update-standings/config.json")
+	dir, err := os.Getwd()
+	if err != nil {
+		log.Println("Error getting the current directory in the DecodeConfig function")
+		log.Fatalln(err)
+	}
+	file, _ := os.Open(dir + "/config.json")
 	defer file.Close()
 	decoder := json.NewDecoder(file)
 	configuration := Config{}
-	err := decoder.Decode(&configuration)
+	err = decoder.Decode(&configuration)
 	if err != nil {
 		log.Println("ERROR")
 		log.Fatalln(err)
